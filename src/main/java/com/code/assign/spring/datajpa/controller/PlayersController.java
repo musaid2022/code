@@ -109,7 +109,7 @@ public class PlayersController {
 		  Page<SportsPlayers> list= 	sportsPlayersRepository.findAll(sortedByName);	
 		  
 		  
-		;
+		
 		return ResponseEntity.status(HttpStatus.OK)
 			        .body(list);
 		
