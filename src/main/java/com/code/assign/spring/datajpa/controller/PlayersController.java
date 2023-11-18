@@ -44,12 +44,21 @@ public class PlayersController {
 	@RequestMapping(value = "/a1" ,method = RequestMethod.GET)
 	public ResponseEntity<?> a1(@RequestParam("gender") String gender , @RequestParam("level") Integer level ,@RequestParam("age") Integer age) {
 		
-		
+		try {
+			
 		List<Players> list =	playersRepository.findByGenderAndLevelAndAge(gender, level, age);	
-		  
 		
 		return ResponseEntity.status(HttpStatus.OK)
-			        .body(list);
+		        .body(list);
+		}
+		catch (Exception e) {
+			
+			//throw new Business Exception()
+			e.printStackTrace();
+		}
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Exception occurs");
+		
+		
 		
 	}
 
